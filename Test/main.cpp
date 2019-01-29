@@ -1,46 +1,20 @@
-/*Program to illustrate use of the CodeBlocks environment
- Consists of main and a function employing input (pass by value)
- parameters.
- Written by Ron
- August 2015
- Language: C++ Environment: CodeBlocks 13.12
- Compiler: GNU C++
-*/
 #include <iostream>
+
 using namespace std;
-void doit(int cloyd, int gidney, int moonmen); //function prototype
-int main(void)
-{int rocky, bw, boris;
- rocky=3;
- bw=4;
- boris=rocky+bw;
- cout<<"before function call rocky = "<<rocky<<endl<<
- "bw = "<<bw<<endl<<
- "boris = "<<boris<<endl;
- doit(rocky,bw,boris);
- cout<<"after function call rocky = "<<rocky<<endl<<
- "bw = "<<bw<<endl<<
- "boris = "<<boris<<endl;
- return 0;
-}
-void doit(int cloyd, int gidney, int moonmen)
-/*Function to demonstrate pass by value (input parameter)
- Written by Ron
- August 2015
- Language: C++ Environment: CodeBlocks 13.12
- Compiler: GNU C++
- */
- {
- cout<<"Entering doit"<<endl<<
- "cloyd = "<<cloyd<<endl<<
- "gidney = "<<gidney<<endl<<
- "moonmen = "<<moonmen<<endl;
- moonmen=moonmen*cloyd;
- cloyd=moonmen+3;
- gidney=cloyd*4;
- cout<<"Leaving doit"<<endl<<
- "cloyd = "<<cloyd<<endl<<
- "gidney = "<<gidney<<endl<<
- "moonmen = "<<moonmen<<endl;
- return;
+
+int main(void){
+        int a[1][1];
+        int i,
+            j;
+
+        for(i = 1; i < 3; i++){
+            for(j = 1; j < 3; j++){
+                cout<<"Enter integer to be put into matrix position "<< i << ", "<< j <<": ";
+                cin>>a[i][j];
+            }
+        }
+        cout<<"Matrix"<<endl;
+        cout<< a[1][1] <<" "<< a[1][2]<<endl;
+        cout<< a[2][1] <<" "<< a[2][2]<<endl;
+        return 0;
  }
