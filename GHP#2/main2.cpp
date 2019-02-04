@@ -11,7 +11,7 @@ Date of Last Revision: 2/4/2019
 
 using namespace std;
 
-int main()
+int main2()
 {
     int a[3][3]; //5x5 Matrix
     int b, //number of spaces in the matrix
@@ -31,18 +31,18 @@ int main()
     //Reset the row and column and populate a[0][2] with 1
     i = 0;
     j = 1;
-    a[0][1] = 1;
+    a[0][2] = 1;
 
     //Populate the matrix with all numbers 1-25
     for(b = 1; b < 9; b++){
         k = i;
         l = j;
         if(i - 1 < 0){
-            k = 2;
+            k = 4;
             l++;
         }
         else{
-            if(j + 1 > 2){
+            if(j + 1 > 4){
                 l = 0;
                 k--;
             }

@@ -17,8 +17,6 @@ int main()
         c = 0, //Check to see if value was found
         i, //Row increment
         j, //Column increment
-        k, //Row comparator
-        l; //Column comparator
 
     //Populate the matrix
     a[0][0] = 1;
@@ -34,8 +32,8 @@ int main()
     //Search for a number
     cout<<"Input a whole number to search the matrix for: ";
     cin>>b;
-    for(i = 0; i < 2 ; i++){
-        for(j = 0; j < 2 ; j++){
+    for(i = 0; i < 2 && c == 0; i++){
+        for(j = 0; j < 2 && c == 0; j++){
             if(a[i][j] == b){ //If the input number and the current number are equal store the value of its column and row
                 cout<< b << " was found."<<endl;
                 c = 1;
