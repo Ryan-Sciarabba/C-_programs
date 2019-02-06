@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1549482108 source:c:\users\black\downloads\c++_programs\files\main.cpp
+	<iostream>
+	"filing.h"
+
+1549481217 c:\users\black\downloads\c++_programs\files\filing.cpp
+
+1549481217 source:c:\users\black\downloads\c++_programs\files\filing.cpp
+
+1549482006 c:\users\black\downloads\c++_programs\files\filing.h
+
+1549481934 source:c:\users\black\downloads\c++_programs\files\file.cpp
+	"filing.h"
+
+1549481682 c:\users\black\downloads\c++_programs\files\file.cpp
+	"filing.h"
+
