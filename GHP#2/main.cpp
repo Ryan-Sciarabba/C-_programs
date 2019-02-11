@@ -110,7 +110,7 @@ int three(void){
 
     for(i = 0; i < 3; i++){
         for(j = 0; j < 3; j++){
-            cout<<setw(2)<<a[i][j]<<" "; //setw() changes the amount of space in front of the next printed value
+            cout<<setw(2)<<a[i][j]<<" "; //setw() changes the amount of spaces in front of the next printed value
         }
         cout<<endl;
     }
@@ -143,12 +143,12 @@ int five(void){
         }
     }
 
-    //Reset the row and column and populate a[0][3] with 1
+    //Reset the row and column and populate a[0][2] with 1
     i = 0;
     j = 2;
     a[0][2] = 1;
 
-    //Populate the matrix with all numbers 1-49
+    //Populate the matrix with all numbers 1-25
     for(b = 1; b < 25; b++){
         k = i;
         l = j;
