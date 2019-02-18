@@ -2,6 +2,8 @@
 1549315627 source:c:\users\black\downloads\c++_programs\test\main.cpp
 	<iostream>
 
-1549392500 source:c:\users\ryan\downloads\c++_programs\test\main.cpp
+1550503986 source:c:\users\ryan\downloads\c++_programs\test\main.cpp
+	<fstream>
 	<iostream>
+	<string>
 

@@ -2,9 +2,9 @@
 Purpose: To create a magic square
 Written by: Ryan Sciarabba
 Language: C++ (g++ target)
-Version: 4.6.5
+Version: 5.5.8
 Date of Creation: 2/4/2019
-Date of Last Revision: 2/5/2019
+Date of Last Revision: 2/13/2019
 */
 
 #include <iostream>
@@ -12,396 +12,76 @@ Date of Last Revision: 2/5/2019
 
 using namespace std;
 
-int three(void);
-int five(void);
-int seven(void);
-int nine(void);
-int eleven(void);
+
 
 int main(){
 
-    int d; //User-given matrix size
+    int a[127][127], //Matrix max size
+        b; //Size of the matrix
 
     //Ask the user for matrix size
-    cout<<"Input a whole odd number from 3 to 11 for the size of the magic square: ";
-    cin>>d;
+    cout<<"Input a whole odd number from 1 to 127 to compute a magic square: ";
+    cin>>b;
 
-    //Go to functions for each matrix size
-    if(d == 3){
-        three();
-    }
-    if(d == 5){
-        five();
-    }
-    if(d == 7){
-        seven();
-    }
-    if(d == 9){
-        nine();
-    }
-    if(d == 11){
-        eleven();
-    }
-    return 0;
-}
-
-/*
-Purpose: To create a 3x3 magic square
-Written by: Ryan Sciarabba
-Language: C++ (g++ target)
-Version: 1.1.5
-Date of Creation: 2/5/2019
-Date of Last Revision: 2/5/2019
-*/
-
-int three(void){
-
-    int a[3][3]; //3x3 Matrix
-    int b, //number of spaces in the matrix
-        c = 2, //Number to put into matrix
-        i = 0, //Row
-        j = 1, //Column
-        k = 0, //Row check
-        l = 1; //Column check
+    int cMax = b, //Max column
+        c = 0, //Column
+        r = 0, //Row
+        k = 0, //Column check
+        l = 0, //Row check
+        f; //Fill number
 
     //Populate the matrix with all 0's
-    for(i = 0; i < 3; i++){
-        for(j = 0; j < 3; j++){
-                a[i][j] = 0;
+    for(c = 0; c < b; c++){
+        for(r = 0; r < b; r++){
+                a[r][c] = 0;
         }
     }
 
-    //Reset the row and column and populate a[0][1] with 1
-    i = 0;
-    j = 1;
-    a[0][1] = 1;
+    //Reset the row and column and populate the top, middle most space with 1
+    r = 0;
+    c = cMax / 2;
+    a[0][(cMax / 2)] = 1;
 
-    //Populate the matrix with all numbers 1-9
-    for(b = 1; b < 9; b++){
-        k = i;
-        l = j;
-        if(i - 1 < 0){
-            k = 2;
-            l++;
-        }
-        else{
-            if(j + 1 > 2){
-                l = 0;
-                k--;
+    //Populate the matrix with all numbers
+    for(f = 2; f <= (b * b); f++){
+
+        k = c;
+        l = r;
+        if(l - 1 < 0){
+            l = (cMax - 1);
+            if(k + 1 > cMax - 1){
+                k = 0;
             }
             else{
-                k--;
-                l++;
+                k++;
             }
         }
-        if(a[k][l] == 0){
-            i = k;
-            j = l;
+        else{
+            if(k + 1 > cMax - 1){
+                k = 0;
+                l--;
+            }
+            else{
+                l--;
+                k++;
+            }
+        }
+        if(a[l][k] == 0){
+            c = k;
+            r = l;
         }
         else{
-            i++;
+            r++;
         }
-        a[i][j] = c;
-        c++;
+        a[r][c] = f;
     }
 
     //Print the matrix
     cout<<"Matrix: "<<endl;
 
-    for(i = 0; i < 3; i++){
-        for(j = 0; j < 3; j++){
-            cout<<setw(2)<<a[i][j]<<" "; //setw() changes the amount of spaces in front of the next printed value
-        }
-        cout<<endl;
-    }
-    return 0;
-}
-
-/*
-Purpose: To create a 5x5 magic square
-Written by: Ryan Sciarabba
-Language: C++ (g++ target)
-Version: 1.1.2
-Date of Creation: 2/5/2019
-Date of Last Revision: 2/5/2019
-*/
-
-int five(void){
-
-    int a[5][5]; //5x5 Matrix
-    int b, //number of spaces in the matrix
-        c = 2, //Number to put into matrix
-        i = 0, //Row
-        j = 2, //Column
-        k = 0, //Row check
-        l = 2; //Column check
-
-    //Populate the matrix with all 0's
-    for(i = 0; i < 5; i++){
-        for(j = 0; j < 5; j++){
-                a[i][j] = 0;
-        }
-    }
-
-    //Reset the row and column and populate a[0][2] with 1
-    i = 0;
-    j = 2;
-    a[0][2] = 1;
-
-    //Populate the matrix with all numbers 1-25
-    for(b = 1; b < 25; b++){
-        k = i;
-        l = j;
-        if(i - 1 < 0){
-            k = 4;
-            l++;
-        }
-        else{
-            if(j + 1 > 4){
-                l = 0;
-                k--;
-            }
-            else{
-                k--;
-                l++;
-            }
-        }
-        if(a[k][l] == 0){
-            i = k;
-            j = l;
-        }
-        else{
-            i++;
-        }
-        a[i][j] = c;
-        c++;
-    }
-
-    //Print the matrix
-    cout<<"Matrix: "<<endl;
-
-    for(i = 0; i < 5; i++){
-        for(j = 0; j < 5; j++){
-            cout<<setw(2)<<a[i][j]<<" "; //setw() changes the amount of space in front of the next printed value
-        }
-        cout<<endl;
-    }
-    return 0;
-}
-
-/*
-Purpose: To create a 7x7 magic square
-Written by: Ryan Sciarabba
-Language: C++ (g++ target)
-Version: 1.1.2
-Date of Creation: 2/5/2019
-Date of Last Revision: 2/5/2019
-*/
-
-int seven(void){
-
-    int a[7][7]; //7x7 Matrix
-    int b, //number of spaces in the matrix
-        c = 2, //Number to put into matrix
-        i = 0, //Row
-        j = 3, //Column
-        k = 0, //Row check
-        l = 3; //Column check
-
-    //Populate the matrix with all 0's
-    for(i = 0; i < 7; i++){
-        for(j = 0; j < 7; j++){
-            a[i][j] = 0;
-        }
-    }
-
-    //Reset the row and column and populate a[0][3] with 1
-    i = 0;
-    j = 3;
-    a[0][3] = 1;
-
-    //Populate the matrix with all numbers 1-49
-    for(b = 1; b < 49; b++){
-        k = i;
-        l = j;
-        if(i - 1 < 0){
-            k = 6;
-            l++;
-        }
-        else{
-            if(j + 1 > 6){
-                l = 0;
-                k--;
-            }
-            else{
-                k--;
-                l++;
-            }
-        }
-        if(a[k][l] == 0){
-            i = k;
-            j = l;
-        }
-        else{
-            i++;
-        }
-        a[i][j] = c;
-        c++;
-    }
-
-    //Print the matrix
-    cout<<"Matrix: "<<endl;
-
-    for(i = 0; i < 7; i++){
-        for(j = 0; j < 7; j++){
-            cout<<setw(2)<<a[i][j]<<" "; //setw() changes the amount of space in front of the next printed value
-        }
-        cout<<endl;
-    }
-    return 0;
-}
-
-/*
-Purpose: To create a 9x9 magic square
-Written by: Ryan Sciarabba
-Language: C++ (g++ target)
-Version: 1.1.2
-Date of Creation: 2/5/2019
-Date of Last Revision: 2/5/2019
-*/
-
-
-int nine(void){
-
-    int a[9][9]; //9x9 Matrix
-    int b, //number of spaces in the matrix
-        c = 2, //Number to put into matrix
-        i = 0, //Row
-        j = 4, //Column
-        k = 0, //Row check
-        l = 4; //Column check
-
-    //Populate the matrix with all 0's
-    for(i = 0; i < 9; i++){
-        for(j = 0; j < 9; j++){
-            a[i][j] = 0;
-        }
-    }
-
-    //Reset the row and column and populate a[0][4] with 1
-    i = 0;
-    j = 4;
-    a[0][4] = 1;
-
-    //Populate the matrix with all numbers 1-81
-    for(b = 1; b < 81; b++){
-        k = i;
-        l = j;
-        if(i - 1 < 0){
-            k = 8;
-            l++;
-        }
-        else{
-            if(j + 1 > 8){
-                l = 0;
-                k--;
-            }
-            else{
-                k--;
-                l++;
-            }
-        }
-        if(a[k][l] == 0){
-            i = k;
-            j = l;
-        }
-        else{
-            i++;
-        }
-        a[i][j] = c;
-        c++;
-    }
-
-    //Print the matrix
-    cout<<"Matrix: "<<endl;
-
-    for(i = 0; i < 9; i++){
-        for(j = 0; j < 9; j++){
-            cout<<setw(2)<<a[i][j]<<" "; //setw() changes the amount of space in front of the next printed value
-        }
-        cout<<endl;
-    }
-    return 0;
-}
-
-/*
-Purpose: To create an 11x11 magic square
-Written by: Ryan Sciarabba
-Language: C++ (g++ target)
-Version: 1.1.5
-Date of Creation: 2/5/2019
-Date of Last Revision: 2/5/2019
-*/
-
-int eleven(void){
-
-    int a[11][11]; //11x11 Matrix
-    int b, //number of spaces in the matrix
-        c = 2, //Number to put into matrix
-        i = 0, //Row
-        j = 5, //Column
-        k = 0, //Row check
-        l = 5; //Column check
-
-    //Populate the matrix with all 0's
-    for(i = 0; i < 11; i++){
-        for(j = 0; j < 11; j++){
-            a[i][j] = 0;
-        }
-    }
-
-    //Reset the row and column and populate a[0][5] with 1
-    i = 0;
-    j = 5;
-    a[0][5] = 1;
-
-    //Populate the matrix with all numbers 1-121
-    for(b = 1; b < 121; b++){
-        k = i;
-        l = j;
-        if(i - 1 < 0){
-            k = 10;
-            l++;
-        }
-        else{
-            if(j + 1 > 10){
-                l = 0;
-                k--;
-            }
-            else{
-                k--;
-                l++;
-            }
-        }
-        if(a[k][l] == 0){
-            i = k;
-            j = l;
-        }
-        else{
-            i++;
-        }
-        a[i][j] = c;
-        c++;
-    }
-
-    //Print the matrix
-    cout<<"Matrix: "<<endl;
-
-    for(i = 0; i < 11; i++){
-        for(j = 0; j < 11; j++){
-            cout<<setw(3)<<a[i][j]<<" "; //setw() changes the amount of space in front of the next printed value
-        }
-        for(j = 0; j < 11; j++){
+    for(c = 0; c < b; c++){
+        for(r = 0; r < b; r++){
+            cout<<setw(4)<<a[c][r]<<" "; //setw() changes the amount of space in front of the next printed value
         }
         cout<<endl;
     }
