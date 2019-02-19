@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1550607710 source:c:\users\ryan\downloads\c++_programs\nod\main.cpp
+	"noD.h"
+	<iostream>
+
+1550606999 c:\users\ryan\downloads\c++_programs\nod\nod.h
+
+1550607554 source:c:\users\ryan\downloads\c++_programs\nod\nod.cpp
+	"noD.h"
+	<iostream>
+	<fstream>
+	<string>
+	<cstring>
+
