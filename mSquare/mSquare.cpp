@@ -5,9 +5,22 @@
 
 using namespace std;
 
-void mSquare(int matrix[][127], int size){
+int mSquare(int matrix[127][127], int mSize){
 
-    int cMax = size, //Max column
+    if((mSize % 2) == 0 && mSize > 1 && mSize < 127){
+        cout<<"ERROR: Number is even. ";
+        return 1;
+    }
+    if(mSize < 1){
+        cout<<"ERROR: Number is less than 1. ";
+        return 1;
+    }
+    if(mSize > 127){
+        cout<<"ERROR: Number is greater than 127. ";
+        return 1;
+    }
+
+    int cMax = mSize, //Max column
         c = 0, //Column
         r = 0, //Row
         k = 0, //Column check
@@ -15,8 +28,8 @@ void mSquare(int matrix[][127], int size){
         f; //Fill number
 
     //Populate the matrix with all 0's
-    for(c = 0; c < size; c++){
-        for(r = 0; r < size; r++){
+    for(c = 0; c < mSize; c++){
+        for(r = 0; r < mSize; r++){
                 matrix[r][c] = 0;
         }
     }
@@ -27,7 +40,7 @@ void mSquare(int matrix[][127], int size){
     matrix[0][(cMax / 2)] = 1;
 
     //Populate the matrix with all numbers
-    for(f = 2; f <= (size * size); f++){
+    for(f = 2; f <= (mSize * mSize); f++){
 
         k = c;
         l = r;
@@ -59,4 +72,5 @@ void mSquare(int matrix[][127], int size){
         }
         matrix[r][c] = f;
     }
+    return 0;
 }

@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1551330454 source:c:\users\black\documents\github\c-_programs\msquare\msquare.cpp
+1551729834 source:c:\users\black\documents\github\c-_programs\msquare\msquare.cpp
 	"mSquare.h"
 	<iostream>
 	<iomanip>
 
-1551330452 c:\users\black\documents\github\c-_programs\msquare\msquare.h
+1551729797 c:\users\black\documents\github\c-_programs\msquare\msquare.h
 
-1551330402 source:c:\users\black\documents\github\c-_programs\msquare\main.cpp
+1551728335 source:c:\users\black\documents\github\c-_programs\msquare\main.cpp
 	"mSquare.h"
 	<iostream>
 	<iomanip>

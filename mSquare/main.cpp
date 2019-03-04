@@ -7,16 +7,23 @@ using namespace std;
 
 int main()
 {
-    int a[127][127], //Matrix max size
-        b, //Size of the matrix
-        c,
-        r;
+    int a[127][127],
+        b = 0, //Size of the matrix
+        c, //Column
+        r, //Row
+        i;
+
+    bool d = false;
 
     //Ask the user for matrix size
-    cout<<"Input a whole odd number from 1 to 127 to compute a magic square: ";
-    cin>>b;
+    while(d == false){
+        cout<<"Input a whole odd number from 1 to 127 to compute a magic square: ";
+        cin>>b;
 
-    mSquare(a, b);
+        if(mSquare(a, b) == 0){
+            d = true;
+        }
+    }
 
     cout<<"Matrix:"<<endl;
 
