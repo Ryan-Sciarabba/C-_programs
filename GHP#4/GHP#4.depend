@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1551901136 source:c:\users\black\documents\github\c-_programs\ghp#4\stack.cpp
+	<iostream>
+	<cstdlib>
+	"Stack.h"
+
+1551903040 c:\users\black\documents\github\c-_programs\ghp#4\stack.h
+	<iostream>
+
+1551903396 source:c:\users\black\documents\github\c-_programs\ghp#4\main.cpp
+	<iostream>
+	"stack.h"
+
