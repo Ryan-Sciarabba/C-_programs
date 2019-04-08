@@ -1,13 +1,9 @@
 /*
-Purpose: To take a word and determine using a stack and queue if it is a palindrome
-Written by: Ryan Sciarabba
-Language: C++ (g++ target)
-Version: 1.1.5
-Date of Creation: 4/3/2019
-Date of Last Revision: 4/3/2019
+ver: 1.6.3
 */
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <stack>
 #include <queue>
@@ -16,45 +12,66 @@ using namespace std;
 
 int main()
 {
-    string word; //String of word input by user
+    ifstream fPointer("dictionary.txt"); //Name of file to be searched
 
-    int i; //Integer to push characters onto a stack and queue
+    string word; //Word to be processed
+
+    int i, //Integer for loops
+        palNum = 0, //Number of palindromes
+        wrdNum = 0; //Number of words processed
 
     bool a = true; //Boolean for palindrome checker
 
     stack<char> sPal; //Stack version of word
     queue<char> qPal; //Queue version of word
 
-    //Take user input and store in 'word'
-    cout<<"Input a word to see if it is a palindrome: ";
-    cin>>word;
-    cout<<endl<<endl;
+    //Print start of palindrome list
+    cout<<"Palindromes: ";
 
-    //Push characters onto stack and queue
-    for(i = 0; i <= (word.length() - 1); i++){
-        sPal.push(word[i]);
-        qPal.push(word[i]);
-    }
+    //Check file for first line
+    while(getline(fPointer, word)){
 
-    //Check to see if stack is empty and compare letters
-    while(!sPal.empty() && a == true){
-        if(sPal.top() == qPal.front()){
+        //Push characters onto stack and queue from file line
+        for(i = 0; i <= (word.length() - 1); i++){
+            sPal.push(word[i]);
+            qPal.push(word[i]);
+        }
+
+        //Check to see if word is a palindrome
+        while(!sPal.empty() && a == true){
+
+            if(sPal.top() == qPal.front()){
+                a = true;
+            }
+            else{
+                a = false;
+            }
             sPal.pop();
             qPal.pop();
-            a = true;
         }
-        else{
-            a = false;
+
+        //If word is a palindrome add one to palNum and print word
+        if(a == true){
+            palNum++;
+            cout<<word<<"  ";
         }
+
+        //Add one to words processed and reset stack, queue and boolean
+        wrdNum++;
+
+        while(!qPal.empty()){
+            qPal.pop();
+        }
+        while(!sPal.empty()){
+            sPal.pop();
+        }
+        a = true;
     }
 
-    //If a is true the word is a palindrome
-    if(a == true){
-        cout<<word<<" is a palindrome"<<endl;
-    }
-    else{
-        cout<<word<<" is not a palindrome"<<endl;
-    }
+    //Print totals
+    cout<<endl<<endl<<"Words that are palindromes: "<<palNum<<endl;
+    cout<<"Words processed: "<<wrdNum<<endl;
 
     return 0;
 }
+
