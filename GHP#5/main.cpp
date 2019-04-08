@@ -1,7 +1,11 @@
 /*
-ver: 1.6.3
+Purpose: To read a file and print all palindromes
+Written by: Ryan Sciarabba
+Language: C++ (g++ target)
+Version: 1.7.2
+Date of Creation: 4/3/2019
+Date of Last Revision: 4/3/2019
 */
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -12,7 +16,7 @@ using namespace std;
 
 int main()
 {
-    ifstream fPointer("dictionary.txt"); //Name of file to be searched
+    ifstream fPointer("words"); //Name of file to be searched
 
     string word; //Word to be processed
 
@@ -74,4 +78,3 @@ int main()
 
     return 0;
 }
-

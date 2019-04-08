@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1554320773 source:c:\users\black\documents\github\c-_programs\altmain\main.cpp
-	<iostream>
-	<fstream>
-	<string>
-	<stack>
-	<queue>
-
