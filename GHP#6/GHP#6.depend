@@ -1,7 +1,7 @@
 # depslib dependency file v1.0
-1555357145 source:c:\users\black\documents\github\c-_programs\ghp#6\main.cpp
+1555366767 source:c:\users\black\documents\github\c-_programs\ghp#6\main.cpp
 	<iostream>
-	<vector>
 	<algorithm>
-	<array>
+	<vector>
+	<numeric>
 
