@@ -2,7 +2,7 @@
 Purpose: To take in a list of words to give to the hash class
 Written by: Ryan Sciarabba
 Language: C++ (g++ target)
-Version: 1.0.0
+Version: 1.4e.2
 Date of Creation: 4/16/2019
 Date of Last Revision: 4/16/2019
 */
@@ -14,25 +14,30 @@ using namespace std;
 
 int main()
 {
-    int words = 0;
-    string name;
+    myHash aHash; //Create hash
+    int words = 1; //Number of names input
+    string name; //Name to be input
 
-
+    //Have user input 15 names and store them in the hash
     while(words <= 15){
         cout<<"Input name to be stored in the hash: ";
         cin>>name;
-        myHash.store(name);
+        aHash.store(name);
         words++;
     }
 
-    cout<<"Contents of hash: "<<myHash.display()<<endl;
+    //Print out hash
+    cout<<"Contents of hash: ";
+    aHash.display();
+    cout<<endl;
 
-    while(name != "n"){
-        cout<<"Input name to search for or input 'n' to quit";
+    //Have user search for names in the hash
+    while(name != "@"){
+        cout<<"Input name to search for or input '@' to quit: ";
         cin>>name;
 
-        if(name != 'n'){
-            myHash.whereis(name);
+        if(name != "@"){
+            aHash.whereIs(name);
         }
     }
 
