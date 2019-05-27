@@ -1,0 +1,13 @@
+Functions:
+
+- Store Employee Data - DONE
+- Search by ID - DONE
+- Search by first name CHECK
+- Search by last name CHECK
+- Display data for all employees CHECK
+
+Things to fix:
+
+- Address not fully taking in numbers
+- Position not taking multi-worded positions
+- Display displaying all but the last employee

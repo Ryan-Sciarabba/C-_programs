@@ -1,7 +1,7 @@
 /*
 Purpose: To take in a list of words to give to the hash class
 Written by: Ryan Sciarabba
-Language: C++ (g++ target)
+Language: C++ (g++ target)C:\Users\Ryan\Downloads\C++_programs\GHP#5\words
 Version: 1.4e.2
 Date of Creation: 4/16/2019
 Date of Last Revision: 4/16/2019

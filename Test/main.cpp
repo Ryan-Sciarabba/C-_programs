@@ -1,14 +1,12 @@
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 
 using namespace std;
 
 int main(){
-    string a;
-    int slot, c;
-    a = 'ryas';
-    c = a.size() - 1;
-    slot = int(a[c]);
-    cout<<slot<<endl;
-    return 0;
+
+    char a[100];
+
+    cin.getline(a, 100);
 }
