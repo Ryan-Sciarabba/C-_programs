@@ -9,11 +9,10 @@ class Employee{
 
     public:
 
-        string fName,
-               lName,
-               position;
-
-        char sAddress[100];
+        char fName[100],
+               lName[100],
+               sAddress[100],
+               position[100];
 
         int id,
             age;
@@ -39,7 +38,8 @@ class Employees{
         Employee *head, *it;
         int lastID;
 
-        bool found;
+        bool found,
+             done;
 };
 
 #endif // EMPOLYEE_H

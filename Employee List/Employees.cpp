@@ -22,10 +22,10 @@ void Employees::newEmployee(){
     cout<<"Employee's last name: ";
     cin>>temp->lName;
     cout<<"Employee's home address: ";
-    cin>>temp->sAddress;
+    cin.ignore();
     cin.getline(temp->sAddress, 100);
     cout<<"Employee's position: ";
-    cin>>temp->position;
+    cin.getline(temp->position, 100);
     cout<<"Employee's age: ";
     cin>>temp->age;
 
@@ -83,11 +83,12 @@ void Employees::fNameSearch(string empFName){
         cout<<">No employees to display<"<<endl<<endl;
     }
     else{
+        done = false;
         found = false;
         it = head;
 
-        do{
-            if(empFName == it->fName){
+        while(done != true){
+            if(empFName.compare(it->fName) == 0){
                 cout<<endl<<">Employee found with first name: "<<it->fName<<"<"<<endl;
                 cout<<"Name: "<<it->fName<<" "<<it->lName<<endl;
                 cout<<"Street Address: "<<it->sAddress<<endl;
@@ -96,8 +97,11 @@ void Employees::fNameSearch(string empFName){
                 cout<<"ID#"<<it->id<<endl<<endl;
                 found = true;
             }
+            if(it->next == NULL){
+                done = true;
+            }
             it = it->next;
-        } while(it->next != NULL);
+        }
         if(found == false){
             cout<<">No employee found with matching first name<"<<endl<<endl;
         }
@@ -110,11 +114,12 @@ void Employees::lNameSearch(string empLName){
         cout<<">No employees to display<"<<endl<<endl;
     }
     else{
+        done = false;
         found = false;
         it = head;
 
-        do{
-            if(empLName == it->lName){
+        while(done != true){
+            if(empLName.compare(it->lName) == 0){
                 cout<<endl<<">Employee found with last name: "<<it->lName<<"<"<<endl;
                 cout<<"Name: "<<it->fName<<" "<<it->lName<<endl;
                 cout<<"Street Address: "<<it->sAddress<<endl;
@@ -123,8 +128,11 @@ void Employees::lNameSearch(string empLName){
                 cout<<"ID#"<<it->id<<endl<<endl;
                 found = true;
             }
+            if(it->next == NULL){
+                done = true;
+            }
             it = it->next;
-        } while(it->next != NULL);
+        }
         if(found == false){
             cout<<">No employee found with matching last name<"<<endl<<endl;
         }
@@ -138,11 +146,16 @@ void Employees::display(){
     }
     else{
         it = head;
+        done = false;
 
-        do{
-            cout<<">Employee ID#"<<it->id<<"  "<<"Name: "<<it->fName<<" "<<it->lName<<endl<<endl;
+        while(done != true){
+            cout<<endl<<">Employee ID#"<<it->id<<"  "<<"Name: "<<it->fName<<" "<<it->lName<<endl;
+            if(it->next == NULL){
+                done = true;
+                cout<<endl;
+            }
             it = it->next;
-        } while(it->next != NULL);
+        }
 
     }
 }
@@ -154,15 +167,19 @@ void Employees::dDisplay(){
     }
     else{
         it = head;
+        done = false;
 
-        do{
+        while(done != true){
             cout<<">Employee ID#"<<it->id<<"<"<<endl;
             cout<<"Name: "<<it->fName<<" "<<it->lName<<endl;
             cout<<"Street Address: "<<it->sAddress<<endl;
             cout<<"Age: "<<it->age<<endl;
             cout<<"Position: "<<it->position<<endl<<endl;
+            if(it->next == NULL){
+                done = true;
+            }
             it = it->next;
-        } while(it->next != NULL);
+        }
     }
 }
 

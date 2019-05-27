@@ -2,12 +2,26 @@ Functions:
 
 - Store Employee Data - DONE
 - Search by ID - DONE
-- Search by first name CHECK
-- Search by last name CHECK
-- Display data for all employees CHECK
+- Search by first name - DONE
+- Search by last name - DONE
+- Display data for all employees - DONE
 
 Things to fix:
 
-- Address not fully taking in numbers
-- Position not taking multi-worded positions
-- Display displaying all but the last employee
+- Address not fully taking in numbers - DONE
+- Position not taking multi-worded positions - DONE
+- Display displaying all but the last employee - DONE
+
+5/27/2019
+
+Functions:
+
+- Store Employee Data - DONE
+- Search by ID - DONE
+- Search by first name - DONE
+- Search by last name - DONE
+- Display data for all employees - DONE
+- Move clutter off-screen
+- Store data in files
+- Encrypt files
+- Search by address
