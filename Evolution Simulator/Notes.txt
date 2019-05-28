@@ -1,0 +1,18 @@
+5/27/2019
+
+Functions:
+
+- Generates creatures and gives them a fitness and adaptation range
+- Evolves creatures and randomly selects mutation
+- Creates clone of fittest creature
+- Kills least fit creature
+- Allows user to select number of creatures to generate
+
+Fix:
+
+- Generation mutations are lack luster
+
+Add:
+
+- More generation options and things to make it more exciting
+- Comments

@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1559007182 source:c:\users\ryan\downloads\c++_programs\evolution simulator\creatures.cpp
+	"Creatures.h"
+	<iostream>
+	<stdlib.h>
+	<time.h>
+
+1559007984 c:\users\ryan\downloads\c++_programs\evolution simulator\creatures.h
+
+1559007477 source:c:\users\ryan\downloads\c++_programs\evolution simulator\main.cpp
+	<iostream>
+	"Creatures.h"
+

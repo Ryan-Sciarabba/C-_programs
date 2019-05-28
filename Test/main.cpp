@@ -6,8 +6,13 @@ using namespace std;
 
 int main(){
 
-    char a[100];
+    int a = 2,
+        b = 2;
 
-    cin.getline(a, 100);
-    cout<<a;
+    if(a == 2){
+        cout<<"Wowza";
+    }
+    if(b == 2){
+        cout<<"Golly";
+    }
 }

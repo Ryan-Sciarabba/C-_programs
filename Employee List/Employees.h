@@ -10,9 +10,9 @@ class Employee{
     public:
 
         char fName[100],
-               lName[100],
-               sAddress[100],
-               position[100];
+             lName[100],
+             sAddress[100],
+             position[100];
 
         int id,
             age;
