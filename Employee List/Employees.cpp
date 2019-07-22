@@ -1,18 +1,24 @@
 #include "Employees.h"
 #include <iostream>
-#include <stdlib.h>
+#include <fstream>
 #include <string>
+#include <stdlib.h>
 
 using namespace std;
 
 Employees::Employees()
 {
-    lastID = 0;
+    eDatOut.open("tempData.txt");
+    eDatOut.seekg(-1, ios::end);
+    eDatOut.get(cLastID);
+    lastID = int(cLastID);
     it = head;
     head = NULL;
 }
 
 void Employees::newEmployee(){
+
+    eDatIn.open("empData.txt", ios::app);
 
     Employee *temp;
 
@@ -33,6 +39,8 @@ void Employees::newEmployee(){
     cout<<endl<<"Employee's ID# is: "<<temp->id<<endl<<endl;
     temp->next = NULL;
 
+    eDatIn<<temp->fName<<" "<<temp->lName<<endl<<temp->sAddress<<endl<<temp->position<<endl<<temp->id<<endl<<endl;
+
     if(lastID == 0){
         head = temp;
     }
@@ -46,10 +54,21 @@ void Employees::newEmployee(){
     it = temp;
 
     lastID++;
+
+    eDatIn.close();
 }
 
 void Employees::idSearch(string empID){
 
+    eDatOut.open("empData.txt", ios::out | ios::ate);
+
+    if(getline(eDatOut, empID)){
+        for(i = 0; i <= 4; i++){
+            cout<<empID<<endl;
+        }
+    }
+    eDatOut.close();
+    /*
     if(head == NULL){
         cout<<">No employees to display<"<<endl<<endl;
     }
@@ -75,6 +94,7 @@ void Employees::idSearch(string empID){
             }
         }
     }
+    */
 }
 
 void Employees::fNameSearch(string empFName){
