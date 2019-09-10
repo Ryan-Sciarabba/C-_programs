@@ -2,6 +2,7 @@
 #define EMPLOYEES_H
 
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -36,10 +37,17 @@ class Employees{
     private:
 
         Employee *head, *it;
-        int lastID;
+
+        int lastID,
+            i;
+
+        char cLastID;
 
         bool found,
              done;
+
+        ofstream eDatIn;
+        ifstream eDatOut;
 };
 
 #endif // EMPOLYEE_H

@@ -7,7 +7,8 @@
 	<string>
 	<stdlib.h>
 
-1551899285 source:c:\users\black\documents\github\c-_programs\test\main.cpp
+1563765413 source:c:\users\black\documents\github\c-_programs\test\main.cpp
 	<iostream>
-	<stack>
+	<fstream>
+	<string>
 

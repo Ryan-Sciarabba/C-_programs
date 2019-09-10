@@ -12,3 +12,19 @@
 	<string>
 	<Employees.h>
 
+1563766972 source:c:\users\black\documents\github\c-_programs\employee list\employees.cpp
+	"Employees.h"
+	<iostream>
+	<fstream>
+	<string>
+	<stdlib.h>
+
+1563766760 c:\users\black\documents\github\c-_programs\employee list\employees.h
+	<string>
+	<fstream>
+
+1562604673 source:c:\users\black\documents\github\c-_programs\employee list\main.cpp
+	<iostream>
+	<string>
+	<Employees.h>
+

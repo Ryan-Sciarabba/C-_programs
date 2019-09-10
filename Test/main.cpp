@@ -1,18 +1,22 @@
+// reading a text file
 #include <iostream>
+#include <fstream>
 #include <string>
-#include <stdlib.h>
-
 using namespace std;
 
-int main(){
-
-    int a = 2,
-        b = 2;
-
-    if(a == 2){
-        cout<<"Wowza";
+int main () {
+  string line;
+  ifstream myfile ("empData.txt");
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line) )
+    {
+      cout << line << '\n';
     }
-    if(b == 2){
-        cout<<"Golly";
-    }
+    myfile.close();
+  }
+
+  else cout << "Unable to open file";
+
+  return 0;
 }

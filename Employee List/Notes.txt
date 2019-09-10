@@ -25,3 +25,15 @@ Functions:
 - Store data in files
 - Encrypt files
 - Search by address
+
+7/21/2019
+
+- Move clutter off-screen
+- Store data in files - WIP
+- Encrypt data
+- Search by address
+
+Things to fix:
+
+- LastID always starts at 105?
+- Can't yet use search by ID with file-stored data
