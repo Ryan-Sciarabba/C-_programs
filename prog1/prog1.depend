@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1568159141 source:c:\users\black\documents\github\c-_programs\prog1\main.cpp
+1568321195 source:c:\users\black\documents\github\c-_programs\prog1\main.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
 	<string.h>
 	<sstream>
-	<math.h>
+	<string>
 
 1568176948 source:c:\users\ryan\documents\github\c++_programs\prog1\main.cpp
 	<iostream>

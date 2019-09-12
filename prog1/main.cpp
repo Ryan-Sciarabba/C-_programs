@@ -1,5 +1,5 @@
 //Written by: Ryan Sciarabba
-//Date of last revision: 9/10/2019
+//Date of last revision: 9/12/2019
 //Language: C++ (GCC compiler)
 
 #include <iostream>
@@ -11,119 +11,133 @@
 
 using namespace std;
 
+int baseToDec(int base, string str);
+string decToBase(int decimal, int base);
+
 int main(int argc, char*argv[]){
 
     //Check for input file
     if(argc != 2){
         cout << "ERROR: Invalid number of arguments. Requires 2 but only got " << argc;
+        _Exit(0);
     }
-    else{
 
-        ifstream file(argv[1]); //File to use
-        string line, base; //Line read // final converted number
-        string temp; //Temporary storage of numbers
-        char rem; //Remainder of division
-        string ns1, ns2, ns3; //Starting base //Number to convert //Final base
-        int n1, n3, i, j, exp, dec, comp, m; //Starting base //Final base //Iterator //Iterator //Exponent //Decimal //Number of computations //Number for pow calculation
+    ifstream file(argv[1]); //File to use
+    string line;//Line read
+    string ns2; //Number to convert
+    string converted; //Converted number to correct base
+    int n1, n3, comp, d1;//Starting base //Final base //Number of computations //Decimal
 
-        comp = 1;
-        //Read lines from file
-        while(getline(file, line)){
-            line.append(" ");
+    comp = 1;
 
-            //Weed out comments
-            if(line[0] != '#'){
+    //Read lines from file
+    while(getline(file, line)){
+        line.append(" ");
 
-                //Turn single line into multiple strings
-                istringstream iss(line);
-                iss >> ns1 >> ns2 >> ns3;
+        //Weed out comments
+        if(line[0] == '#')continue;
 
-                //Change to integers
-                n1 = stoi(ns1);
-                n3 = stoi(ns3);
+        //Take input from line
+        istringstream iss(line);
+        iss >> n1 >> ns2 >> n3;
 
-                //Set variables
-                exp = ns2.size() - 1; //Exponent is set to one less than the size of the number
-                dec = 0; //Total decimal is set to zero to start
-                i = 0; //Iterator to move through strings
+        //Compute decimal
+        d1 = baseToDec(n1, ns2);
 
-                //This is where the fun begins. (Not really)
-                while(exp >= 0){
+        //Compute converted number
+        converted.append(decToBase(d1, n3));
 
-                    //Change letters to numbers to be added to the decimal
-                    if(ns2[i] >= 'A' && ns2[i] <= 'Z'){
-                        ns2[i] = ns2[i] - 'A' + 'a';
-                    }
-                    if(ns2[i] >= 'a' && ns2[i] <= 'z'){
-                        ns2[i] = (ns2[i] - 'a' + 10);
-                    }
-                    if(ns2[i] >= '0' && ns2[i] <= '9'){
-                        ns2[i] = ns2[i] - 48;
-                    }
+        //Print result, add one to computation counter, clear old computed result
+        cout<<comp<<"   "<<converted<<"\n";
+        comp++;
+        converted.clear();
+    }
+}
 
-                    //Add to decimal
-                    j = 1;
-                    m = n1;
-                    while(j < exp){
-                        m = m * n1;
-                        j++;
-                    }
-                    if(exp == 0){
-                        m = 1;
-                    }
-                    dec = dec + (ns2[i] * m);
-                    exp--;
-                    i++;
+//Function to convert number from a base to a decimal
+//Written by: Ryan Sciarabba
+//Date of last revision: 9/12/2019
+//Language: C++ (GCC compiler)
+int baseToDec(int base, string str){
 
-                }
+    //Set variables
+    int exp = str.size() - 1; //Exponent is set to one less than the size of the number
+    int dec = 0; //Total decimal is set to zero to start
+    int i = 0; //Iterator to move through strings
 
+    //This is where the fun begins. (Not really)
+    while(exp >= 0){
 
-                base.clear();
-                //Now we start the devision
-                while(dec >= 0){
-                    //Make sure the decimal is still larger than the remainder and if not just add the remainder to the total
-                    if(dec < n3){
-
-                        rem = dec + 55;
-
-                        //If the remainder is in the letter range, make it lower-case. Otherwise subtract 7 to make it the correct ASCII number
-                        if(rem >= 'A' && rem <= 'Z'){
-                            rem = rem - 'A' + 'a';
-                        }
-                        else{
-                            rem = rem - 7;
-                        }
-                        temp = rem;
-                        base.insert(0, temp);
-                        dec = -1;
-                    }
-
-                    //Otherwise divide and find remainders
-                    else{
-                        rem = dec % n3 + 55;
-                        //If the remainder is in the letter range, make it lower-case. Otherwise subtract 7 to make it the correct ASCII number
-                        if(rem >= 'A' && rem <= 'Z'){
-                            rem = rem - 'A' + 'a';
-                        }
-                        else{
-                            rem = rem - 7;
-                        }
-
-                        //Add the remainder to the string
-                        temp = rem;
-                        base.insert(0, temp);
-                        dec = dec / n3;
-                    }
-                }
-                //Print result and add one to computation counter
-                cout<<comp<<"   "<<base<<"\n";
-                comp++;
-            }
-            //Bypass any lines that will not be computed
-            else{
-                continue;
-            }
+        //Change letters to numbers to be added to the decimal
+        if(str[i] >= 'A' && str[i] <= 'Z'){
+            str[i] = str[i] - 'A' + 'a';
         }
+        if(str[i] >= 'a' && str[i] <= 'z'){
+            str[i] = (str[i] - 'a' + 10);
+        }
+        if(str[i] >= '0' && str[i] <= '9'){
+            str[i] = str[i] - 48;
+        }
+
+        //Compute power
+        int j = 1;
+        int m = base;
+        while(j < exp){
+            m = m * base;
+            j++;
+        }
+        if(exp == 0){
+            m = 1;
+        }
+
+        //Add to decimal
+        dec = dec + (str[i] * m);
+        exp--;
+        i++;
     }
-    return 0;
+    return dec;
+}
+
+//Function to convert number from decimal to base
+//Written by: Ryan Sciarabba
+//Date of last revision: 9/12/2019
+//Language: C++ (GCC compiler)
+string decToBase(int decimal, int base){
+
+    string sBase, temp; //String to add computation to //Temporary string for computation
+    char rem; //Remainder of devision
+
+    //Make sure previous base string is clear
+    sBase.clear();
+
+    //Now we start the devision
+    while(decimal >= 0){
+
+        //Make sure the decimal is still larger than the remainder and if not just add the remainder to the total
+        if(decimal < base){
+            rem = decimal + 55;
+            decimal = -1;
+        }
+
+        //Divide and add remainders
+        else{
+            rem = decimal % base + 55;
+            decimal = decimal / base;
+        }
+
+        //If the remainder is in the letter range, make it lower-case.
+        if(rem >= 'A' && rem <= 'Z'){
+            rem = rem - 'A' + 'a';
+        }
+
+        //Otherwise subtract 7 to make it the correct ASCII number
+        else{
+            rem = rem - 7;
+        }
+
+        //Add the remainder to the string
+        temp = rem;
+        sBase.insert(0, temp);
+    }
+    return sBase;
 }
