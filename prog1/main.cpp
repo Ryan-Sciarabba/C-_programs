@@ -35,7 +35,7 @@ int main(int argc, char*argv[]){
         line.append(" ");
 
         //Weed out comments
-        if(line[0] == '#')continue;
+        if(line[0] == '#' || line[0] == ' ')continue;
 
         //Take input from line
         istringstream iss(line);
@@ -69,9 +69,6 @@ int baseToDec(int base, string str){
     while(exp >= 0){
 
         //Change letters to numbers to be added to the decimal
-        if(str[i] >= 'A' && str[i] <= 'Z'){
-            str[i] = str[i] - 'A' + 'a';
-        }
         if(str[i] >= 'a' && str[i] <= 'z'){
             str[i] = (str[i] - 'a' + 10);
         }
