@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1569360554 source:c:\users\black\documents\github\c-_programs\prog2\prog2.cpp
+	<iostream>
+	<fstream>
+	<math.h>
+
