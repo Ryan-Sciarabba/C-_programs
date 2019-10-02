@@ -1,11 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <math.h>
+#include <time.h>
 
 using namespace std;
 
 //Written by: Ryan Sciarabba
-//Date of last revision: 10/1/2019
+//Date of last revision: 10/2/2019
 //Language: C++ (GCC compiler)
 int main(int argc, char*argv[]){
 
@@ -26,18 +27,18 @@ int main(int argc, char*argv[]){
 
     //Set default pattern to all 0's
     cout<<"CREATING DEFAULT...\n";
-    for(long i = 0; i < bitNum; i++){
-        cout<<i<<" "<<bitNum<<"\n";
+    for(int i = 0; i < bitNum; i++){
         binary[i] = '0';
     }
 
     //Number of computations to figure out
     cout<<"CALCULATING MAX CALCULATIONS...\n";
-    long maxBit = pow(2, bitNum);
+    int maxBit = pow(2, bitNum);
 
     //Output to file
     cout<<"OUTPUTTING TO FILE...\n";
     for(int i = 0; i < maxBit; i++){
+        cout<<i<<" / "<<maxBit<<" bit patterns written... \n";
         for(int k = 0; k < bitNum; k++){
                 file<<binary[k];
         }
