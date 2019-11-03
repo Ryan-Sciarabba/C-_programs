@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1572760505 source:c:\users\ryan\downloads\c++_programs\prog3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<time.h>
+	<errno.h>
+

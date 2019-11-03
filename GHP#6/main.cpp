@@ -29,6 +29,7 @@ int main()
         cin>>price;
         vPrice.push_back(price);
         day++;
+        vPrice.erase(price);
     }
     cout<<endl;
 
