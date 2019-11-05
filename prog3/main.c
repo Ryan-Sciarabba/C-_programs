@@ -101,21 +101,12 @@ void print_bin(uint64_t num, unsigned int bit_cnt) {
  */
 uint64_t rand_bits(unsigned int bit_cnt) {
 
-	uint64_t result = rand();
-	int bit_rand = bit_cnt - 15;
-
-	if(bit_rand > 0){
-
-        int count = 1;
-        for(int i = 0; i < (bit_rand); i++){
-            count = count * 2;
-        }
-
-        result = result<<(bit_rand);
-        result = result + rand() % count;
-	}
-	else{
-        result = result>>(15 - bit_cnt);
-	}
+	uint64_t result;
+	uint64_t mask = 0xFFFFFFFFFFFFFFFF>>(64 - bit_cnt);
+    for(int i = 0; i < 4; i++){
+        result = result<<15;
+        result = result + rand();
+    }
+    result = result & mask;
 	return result;
 }
